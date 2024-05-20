@@ -42,6 +42,11 @@
             <!-- this project's own modules -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>simpleapp-jpa-module-petowner</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>simpleapp-jpa-module-simple</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -88,6 +93,7 @@
     </dependencies>
 
     <modules>
+        <module>module-petowner</module>
         <module>module-simple</module>
         <module>module-simple-tests</module>
         <module>webapp</module>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>simpleapp-jpa</artifactId>
+        <groupId>org.apache.causeway.starters</groupId>
+        <version>2.0.0</version>
+    </parent>
+
+    <artifactId>simpleapp-jpa-module-petowner</artifactId>
+    <name>SimpleApp (JPA) - PetOwner Module</name>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+
+        <!-- CAUSEWAY API -->
+
+        <dependency>
+            <groupId>org.apache.causeway.core</groupId>
+            <artifactId>causeway-applib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.causeway.testing</groupId>
+            <artifactId>causeway-testing-fakedata-applib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.causeway.extensions</groupId>
+            <artifactId>causeway-extensions-fullcalendar-applib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.causeway.extensions</groupId>
+            <artifactId>causeway-extensions-pdfjs-applib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.causeway.persistence</groupId>
+            <artifactId>causeway-persistence-jpa-applib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.causeway.testing</groupId>
+            <artifactId>causeway-testing-fixtures-applib</artifactId>
+        </dependency>
+
+        <!-- IDE support (optional) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
+
+</project>
