@@ -28,8 +28,8 @@ import domainapp.modules.petowner.dom.petowner.PetOwner;
 @EntityScan(basePackageClasses = {PetOwnerModule.class})
 public class PetOwnerModule implements ModuleWithFixtures {
 
-    public static final String NAMESPACE = "simple";
-    public static final String SCHEMA = "simple";
+    public static final String NAMESPACE = "petowner";
+    public static final String SCHEMA = "petowner";
 
     @Override
     public FixtureScript getTeardownFixture() {
