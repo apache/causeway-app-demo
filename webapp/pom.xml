@@ -86,6 +86,11 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>simpleapp-jpa-module-petowner</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>simpleapp-jpa-module-simple</artifactId>
         </dependency>
 
