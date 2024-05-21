@@ -6,6 +6,15 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <mb3:primary>
         <mb3:menu>
+            <mb3:named>Pet Owners</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="petowner.PetOwners" id="create"/>
+                <mb3:serviceAction objectType="petowner.PetOwners" id="findByName"/>
+                <mb3:serviceAction objectType="petowner.PetOwners" id="findByNameLike"/>
+                <mb3:serviceAction objectType="petowner.PetOwners" id="listAll"/>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
             <mb3:named>Simple Objects</mb3:named>
             <mb3:section>
                 <mb3:serviceAction objectType="simple.SimpleObjects" id="create"/>
