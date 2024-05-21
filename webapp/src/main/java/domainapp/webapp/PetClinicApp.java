@@ -12,7 +12,7 @@ import org.apache.causeway.core.config.presets.CausewayPresets;
     AppManifest.class
 //    , XrayEnable.class
 })
-public class SimpleApp extends SpringBootServletInitializer {
+public class PetClinicApp extends SpringBootServletInitializer {
 
     /**
      * @implNote this is to support the <em>Spring Boot Maven Plugin</em>, which auto-detects an
@@ -20,7 +20,7 @@ public class SimpleApp extends SpringBootServletInitializer {
      */
     public static void main(String[] args) {
         CausewayPresets.prototyping();
-        SpringApplication.run(new Class[] { SimpleApp.class }, args);
+        SpringApplication.run(new Class[] { PetClinicApp.class }, args);
     }
 
 }
