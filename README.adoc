@@ -105,6 +105,9 @@ The following table explains the contents of each of the directories:
 |Directory
 |Description
 
+|`module-petowner`
+|Holds the "petowner" module, consisting of the `PetOwner` entity and supporting services.
+
 |`module-simple`
 |Holds the "simple" module, consisting of the `SimpleObject` entity and supporting services.
 
