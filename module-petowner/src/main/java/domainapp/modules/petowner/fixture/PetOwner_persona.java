@@ -30,16 +30,16 @@ import domainapp.modules.petowner.dom.petowner.PetOwner;
 public enum PetOwner_persona
 implements Persona<PetOwner, PetOwner_persona.Builder> {
 
-    FOO("Foo", "Foo.pdf"),
-    BAR("Bar", "Bar.pdf"),
-    BAZ("Baz", null),
-    FRODO("Frodo", "Frodo.pdf"),
-    FROYO("Froyo", null),
-    FIZZ("Fizz", "Fizz.pdf"),
-    BIP("Bip", null),
-    BOP("Bop", null),
-    BANG("Bang", "Bang.pdf"),
-    BOO("Boo", null);
+    JAMAL("Jamal Washington", "jamal.pdf"),
+    CAMILA("Camila González", "camila.pdf"),
+    ARJUN("Arjun Patel", "arjun.pdf"),
+    NIA("Nia Robinson", "nia.pdf"),
+    OLIVIA("Olivia Hartman", "olivia.pdf"),
+    LEILA("Leila Hassan", "leila.pdf"),
+    MATT("Matt Miller", "matt.pdf"),
+    BENJAMIN("Benjamin Thatcher", "benjamin.pdf"),
+    JESSICA("Jessica Raynor", "jessica.pdf"),
+    DANIEL("Daniel Keating", "daniel.pdf");
 
     private final String name;
     private final String contentFileName;
