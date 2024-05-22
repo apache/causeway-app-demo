@@ -30,19 +30,20 @@ import domainapp.modules.petowner.dom.petowner.PetOwner;
 public enum PetOwner_persona
 implements Persona<PetOwner, PetOwner_persona.Builder> {
 
-    JAMAL("Jamal Washington", "jamal.pdf"),
-    CAMILA("Camila González", "camila.pdf"),
-    ARJUN("Arjun Patel", "arjun.pdf"),
-    NIA("Nia Robinson", "nia.pdf"),
-    OLIVIA("Olivia Hartman", "olivia.pdf"),
-    LEILA("Leila Hassan", "leila.pdf"),
-    MATT("Matt Miller", "matt.pdf"),
-    BENJAMIN("Benjamin Thatcher", "benjamin.pdf"),
-    JESSICA("Jessica Raynor", "jessica.pdf"),
-    DANIEL("Daniel Keating", "daniel.pdf");
+    JAMAL("Jamal Washington", "jamal.pdf", "J"),
+    CAMILA("Camila González", "camila.pdf", null),
+    ARJUN("Arjun Patel", "arjun.pdf", null),
+    NIA("Nia Robinson", "nia.pdf", null),
+    OLIVIA("Olivia Hartman", "olivia.pdf", null),
+    LEILA("Leila Hassan", "leila.pdf", null),
+    MATT("Matthew Miller", "matt.pdf", "Matt"),
+    BENJAMIN("Benjamin Thatcher", "benjamin.pdf", "Ben"),
+    JESSICA("Jessica Raynor", "jessica.pdf", "Jess"),
+    DANIEL("Daniel Keating", "daniel.pdf", "Dan");
 
     private final String name;
     private final String contentFileName;
+    private final String knownAs;
 
     @Override
     public Builder builder() {
@@ -68,6 +69,9 @@ implements Persona<PetOwner, PetOwner_persona.Builder> {
                 val bytes = toBytes(persona.contentFileName);
                 val attachment = new Blob(persona.contentFileName, "application/pdf", bytes);
                 petOwner.updateAttachment(attachment);
+            }
+            if (persona.knownAs != null) {
+                petOwner.setKnownAs(persona.knownAs);
             }
 
             petOwner.setLastCheckedIn(clockService.getClock().nowAsLocalDate().plusDays(fakeDataService.ints().between(-10, +10)));
