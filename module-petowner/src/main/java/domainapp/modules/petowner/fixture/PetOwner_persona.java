@@ -74,7 +74,7 @@ implements Persona<PetOwner, PetOwner_persona.Builder> {
                 petOwner.setKnownAs(persona.knownAs);
             }
 
-            petOwner.setLastCheckedIn(clockService.getClock().nowAsLocalDate().plusDays(fakeDataService.ints().between(-10, +10)));
+            petOwner.setLastVisit(clockService.getClock().nowAsLocalDate().plusDays(fakeDataService.ints().between(-10, +10)));
 
             return petOwner;
         }

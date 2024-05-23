@@ -40,7 +40,6 @@ import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.annotation.TableDecorator;
-import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.jaxb.PersistentEntityAdapter;
 import org.apache.causeway.applib.layout.LayoutConstants;
 import org.apache.causeway.applib.services.message.MessageService;
@@ -166,7 +165,7 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.DETAILS, sequence = "3")
     @Column(nullable = true)
     @Getter @Setter
-    private java.time.LocalDate lastCheckedIn;
+    private java.time.LocalDate lastVisit;
 
 
     @Override
@@ -176,8 +175,8 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
     @Override
     public CalendarEvent toCalendarEvent() {
-        if (getLastCheckedIn() != null) {
-            long epochMillis = getLastCheckedIn().toEpochSecond(LocalTime.MIDNIGHT, ZoneOffset.systemDefault().getRules().getOffset(getLastCheckedIn().atStartOfDay())) * 1000L;
+        if (getLastVisit() != null) {
+            long epochMillis = getLastVisit().toEpochSecond(LocalTime.MIDNIGHT, ZoneOffset.systemDefault().getRules().getOffset(getLastVisit().atStartOfDay())) * 1000L;
             return new CalendarEvent(epochMillis, getCalendarName(), titleService.titleOf(this), getNotes());
         } else {
             return null;
