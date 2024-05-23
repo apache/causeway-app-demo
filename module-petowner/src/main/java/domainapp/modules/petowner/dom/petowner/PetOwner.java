@@ -23,6 +23,8 @@ import jakarta.persistence.UniqueConstraint;
 import jakarta.persistence.Version;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import org.apache.causeway.applib.annotation.ObjectSupport;
+
 import org.springframework.lang.Nullable;
 
 import org.apache.causeway.applib.annotation.Action;
@@ -116,8 +118,11 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Inject @Transient MessageService messageService;
 
 
+    @ObjectSupport
+    public String title() {
+        return getName() + (getKnownAs() != null ? " (" + getKnownAs() + ")" : "");
+    }
 
-    @Title
     @Name
     @Column(length = Name.MAX_LEN, nullable = false, name = "name")
     @Getter @Setter @ToString.Include
