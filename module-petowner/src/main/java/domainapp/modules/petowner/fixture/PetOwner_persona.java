@@ -2,6 +2,7 @@ package domainapp.modules.petowner.fixture;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.time.LocalDate;
 
 import javax.inject.Inject;
 
@@ -74,7 +75,9 @@ implements Persona<PetOwner, PetOwner_persona.Builder> {
                 petOwner.setKnownAs(persona.knownAs);
             }
 
-            petOwner.setLastVisit(clockService.getClock().nowAsLocalDate().plusDays(fakeDataService.ints().between(-10, +10)));
+            final var numDaysAgo = fakeDataService.ints().between(2, 100);
+            final var lastVisit = clockService.getClock().nowAsLocalDate().minusDays(numDaysAgo);
+            petOwner.setLastVisit(lastVisit);
 
             return petOwner;
         }
