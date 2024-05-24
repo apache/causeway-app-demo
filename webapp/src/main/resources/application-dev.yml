@@ -1,0 +1,4 @@
+causeway:
+  testing:
+    fixtures:
+      initial-script: domainapp.webapp.application.fixture.scenarios.DomainAppDemo
