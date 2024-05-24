@@ -2,7 +2,6 @@ package domainapp.modules.petowner.fixture;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.time.LocalDate;
 
 import jakarta.inject.Inject;
 
@@ -16,8 +15,6 @@ import org.apache.causeway.testing.fixtures.applib.personas.BuilderScriptWithRes
 import org.apache.causeway.testing.fixtures.applib.personas.Persona;
 import org.apache.causeway.testing.fixtures.applib.setup.PersonaEnumPersistAll;
 
-import domainapp.modules.petowner.dom.petowner.PetOwners;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -26,6 +23,7 @@ import lombok.val;
 import lombok.experimental.Accessors;
 
 import domainapp.modules.petowner.dom.petowner.PetOwner;
+import domainapp.modules.petowner.dom.petowner.PetOwners;
 
 @RequiredArgsConstructor
 public enum PetOwner_persona
@@ -64,7 +62,7 @@ implements Persona<PetOwner, PetOwner_persona.Builder> {
         @Override
         protected PetOwner buildResult(final ExecutionContext ec) {
 
-            val petOwner = wrap(petOwners).create(persona.name);
+            val petOwner = petOwners.create(persona.name);
 
             if (persona.contentFileName != null) {
                 val bytes = toBytes(persona.contentFileName);
