@@ -1,3 +1,5 @@
 name
-lastCheckedIn
+telephoneNumber
+lastVisit
+emailAddress
 #version
