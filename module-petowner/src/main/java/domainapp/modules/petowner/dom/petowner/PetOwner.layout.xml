@@ -38,6 +38,9 @@
                     </bs3:tabGroup>
                 </bs3:col>
                 <bs3:col span="12">
+                    <cpt:fieldSet name="Contact" id="contact"/>
+                </bs3:col>
+                <bs3:col span="12">
                     <cpt:fieldSet name="Details" id="details"/>
                 </bs3:col>
             </bs3:row>
