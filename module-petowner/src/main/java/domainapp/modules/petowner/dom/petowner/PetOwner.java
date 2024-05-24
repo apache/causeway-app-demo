@@ -134,6 +134,18 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.IDENTITY, sequence = "1.1")
     private String knownAs;
 
+    @Column(length = 40, nullable = true, name = "telephoneNumber")
+    @Getter @Setter
+    @Property(editing = Editing.ENABLED)
+    @PropertyLayout(fieldSetId = "contact", sequence = "1.1")
+    private String telephoneNumber;
+
+    @Column(length = 40, nullable = true, name = "emailAddress")
+    @Getter @Setter
+    @Property(editing = Editing.ENABLED)
+    @PropertyLayout(fieldSetId = "contact", sequence = "1.2")
+    private String emailAddress;
+
     @Notes
     @Column(length = Notes.MAX_LEN, nullable = true)
     @Getter @Setter
