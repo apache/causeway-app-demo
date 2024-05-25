@@ -25,7 +25,7 @@ import domainapp.modules.simple.SimpleModule;
 public class HomePageViewModel {
 
     @ObjectSupport public String title() {
-        return getObjects().size() + " objects";
+        return getObjects().size() + " pet owners";
     }
 
     @Collection
