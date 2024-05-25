@@ -24,6 +24,8 @@ import org.apache.causeway.applib.query.Query;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.persistence.jpa.applib.services.JpaSupportService;
 
+import domainapp.modules.petowner.types.PhoneNumber;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -49,7 +51,7 @@ public class PetOwners {
             @Name final String name,
             @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
             final String knownAs,
-            @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
+            @PhoneNumber
             final String telephoneNumber,
             @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
             final String emailAddress) {
