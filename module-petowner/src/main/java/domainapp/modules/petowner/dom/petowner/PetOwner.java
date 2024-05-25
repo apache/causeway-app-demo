@@ -227,15 +227,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @MemberSupport public String default0UpdateName() {
         return getName();
     }
-    @MemberSupport public String validate0UpdateName(final String newName) {
-        for (char prohibitedCharacter : PROHIBITED_CHARACTERS.toCharArray()) {
-            if( newName.contains(""+prohibitedCharacter)) {
-                return "Character '" + prohibitedCharacter + "' is not allowed.";
-            }
-        }
-        return null;
-    }
-    static final String PROHIBITED_CHARACTERS = "&%$!";
 
 
 
