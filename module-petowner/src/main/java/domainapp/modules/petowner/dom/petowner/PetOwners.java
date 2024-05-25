@@ -44,7 +44,7 @@ public class PetOwners {
 
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
+    // @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public PetOwner create(
             @Name final String name,
             @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
