@@ -2,7 +2,9 @@ package domainapp.modules.petowner.dom.petowner;
 
 import java.time.LocalTime;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -183,6 +185,15 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Column(nullable = true)
     @Getter @Setter
     private java.time.LocalDate lastVisit;
+
+
+    @Property
+    @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.DETAILS, sequence = "3.1")
+    public Long getDaysSinceLastVisit() {
+        return getLastVisit() != null
+                ? ChronoUnit.DAYS.between(getLastVisit(), clockService.getClock().nowAsLocalDate())
+                : null;
+    }
 
 
     @Override
