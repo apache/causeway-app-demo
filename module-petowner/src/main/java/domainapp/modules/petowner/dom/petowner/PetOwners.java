@@ -26,6 +26,8 @@ import org.apache.causeway.persistence.jpa.applib.services.JpaSupportService;
 
 import domainapp.modules.petowner.types.PhoneNumber;
 
+import domainapp.modules.petowner.value.EmailAddress;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -53,8 +55,8 @@ public class PetOwners {
             final String knownAs,
             @PhoneNumber
             final String telephoneNumber,
-            @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
-            final String emailAddress) {
+            @Parameter(optionality = Optionality.OPTIONAL)
+            final EmailAddress emailAddress) {
         final var petOwner = PetOwner.withName(name);
         petOwner.setKnownAs(knownAs);
         petOwner.setTelephoneNumber(telephoneNumber);
