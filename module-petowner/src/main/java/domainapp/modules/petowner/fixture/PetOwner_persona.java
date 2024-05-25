@@ -62,7 +62,7 @@ implements Persona<PetOwner, PetOwner_persona.Builder> {
         @Override
         protected PetOwner buildResult(final ExecutionContext ec) {
 
-            val petOwner = petOwners.create(persona.name);
+            val petOwner = petOwners.create(persona.name, null, null, null);
 
             if (persona.contentFileName != null) {
                 val bytes = toBytes(persona.contentFileName);
