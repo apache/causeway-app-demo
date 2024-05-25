@@ -63,6 +63,8 @@ import domainapp.modules.petowner.PetOwnerModule;
 import domainapp.modules.petowner.types.Name;
 import domainapp.modules.petowner.types.Notes;
 
+import domainapp.modules.petowner.types.PhoneNumber;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -139,9 +141,9 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.IDENTITY, sequence = "1.1")
     private String knownAs;
 
-    @Column(length = 40, nullable = true, name = "telephoneNumber")
+    @PhoneNumber
+    @Column(length = PhoneNumber.MAX_LEN, nullable = true, name = "telephoneNumber")
     @Getter @Setter
-    @Property(editing = Editing.ENABLED)
     @PropertyLayout(fieldSetId = "contact", sequence = "1.1")
     private String telephoneNumber;
 
