@@ -6,21 +6,31 @@ import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Column;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.DomainService;
+import org.apache.causeway.applib.annotation.Editing;
+import org.apache.causeway.applib.annotation.Optionality;
+import org.apache.causeway.applib.annotation.Parameter;
 import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.PromptStyle;
+import org.apache.causeway.applib.annotation.Property;
+import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.SemanticsOf;
+import org.apache.causeway.applib.layout.LayoutConstants;
 import org.apache.causeway.applib.query.Query;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.persistence.jpa.applib.services.JpaSupportService;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import domainapp.modules.petowner.PetOwnerModule;
 import domainapp.modules.petowner.types.Name;
+
+import lombok.Setter;
 
 @Named(PetOwnerModule.NAMESPACE + ".PetOwners")
 @DomainService
@@ -36,8 +46,18 @@ public class PetOwners {
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public PetOwner create(
-            @Name final String name) {
-        return repositoryService.persist(PetOwner.withName(name));
+            @Name final String name,
+            @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
+            final String knownAs,
+            @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
+            final String telephoneNumber,
+            @Parameter(maxLength = 40, optionality = Optionality.OPTIONAL)
+            final String emailAddress) {
+        final var petOwner = PetOwner.withName(name);
+        petOwner.setKnownAs(knownAs);
+        petOwner.setTelephoneNumber(telephoneNumber);
+        petOwner.setEmailAddress(emailAddress);
+        return repositoryService.persist(petOwner);
     }
 
 
