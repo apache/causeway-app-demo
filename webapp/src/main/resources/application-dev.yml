@@ -2,3 +2,9 @@ causeway:
   testing:
     fixtures:
       initial-script: domainapp.webapp.application.fixture.scenarios.DomainAppDemo
+
+  viewer:
+    wicket:
+      prompt-style: dialog
+      dialog-mode: modal
+      dialog-mode-for-menu: sidebar
