@@ -25,12 +25,12 @@ import domainapp.modules.simple.SimpleModule;
 public class HomePageViewModel {
 
     @ObjectSupport public String title() {
-        return getObjects().size() + " pet owners";
+        return getPetOwners().size() + " pet owners";
     }
 
     @Collection
     @CollectionLayout(tableDecorator = TableDecorator.DatatablesNet.class)
-    public List<PetOwner> getObjects() {
+    public List<PetOwner> getPetOwners() {
         return petOwners.listAll();
     }
 
