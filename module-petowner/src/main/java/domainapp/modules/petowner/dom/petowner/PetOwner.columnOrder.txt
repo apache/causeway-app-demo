@@ -1,5 +1,9 @@
 name
 telephoneNumber
-lastVisit
 emailAddress
+daysSinceLastVisit
+#lastVisit
+#knownAs
+#attachment
+#notes
 #version
