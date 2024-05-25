@@ -5,6 +5,6 @@ causeway:
 
   viewer:
     wicket:
-      prompt-style: dialog
-      dialog-mode: modal
+      prompt-style: inline
+      #dialog-mode: modal
       dialog-mode-for-menu: sidebar
