@@ -25,6 +25,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.causeway.applib.annotation.ObjectSupport;
 
+import org.apache.causeway.applib.services.clock.ClockService;
+
 import org.springframework.lang.Nullable;
 
 import org.apache.causeway.applib.annotation.Action;
@@ -116,6 +118,7 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Inject @Transient TitleService titleService;
     @Inject @Transient MessageService messageService;
 
+    @Inject @Transient ClockService clockService;
 
     @ObjectSupport
     public String title() {
@@ -152,6 +155,8 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.DETAILS, sequence = "2")
     private String notes;
+
+
 
     @AttributeOverrides({
             @AttributeOverride(name="name",    column=@Column(name="attachment_name")),
