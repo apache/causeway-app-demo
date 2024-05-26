@@ -58,7 +58,9 @@
         <bs3:col span="6">
             <bs3:row>
                 <bs3:col span="12">
-                    <cpt:fieldSet name="Content" id="content"/>
+                    <cpt:fieldSet name="Content" id="content">
+                        <cpt:property id="attachment"/>
+                    </cpt:fieldSet>
                 </bs3:col>
             </bs3:row>
             <bs3:tabGroup  unreferencedCollections="true">
