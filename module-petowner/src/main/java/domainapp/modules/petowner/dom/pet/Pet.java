@@ -30,6 +30,7 @@ import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
+import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.jaxb.PersistentEntityAdapter;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
@@ -75,6 +76,7 @@ public class Pet implements Comparable<Pet> {
     private PetOwner petOwner;
 
     @PetName
+    @Title
     @Column(name = "name", length = PetName.MAX_LEN, nullable = false)
     @Getter @Setter
     @PropertyLayout(fieldSetId = "identity", sequence = "2")
