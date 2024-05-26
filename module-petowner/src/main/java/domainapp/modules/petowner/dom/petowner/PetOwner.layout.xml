@@ -18,6 +18,7 @@
                             <bs3:row>
                                 <bs3:col span="12">
                                     <cpt:fieldSet name="Identity" id="identity">
+                                        <cpt:action id="delete" position="PANEL"/>
                                         <cpt:property id="name">
                                             <cpt:action id="updateName"/>
                                         </cpt:property>
