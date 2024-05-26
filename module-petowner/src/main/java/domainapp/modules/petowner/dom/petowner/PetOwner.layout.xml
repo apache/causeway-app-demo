@@ -35,6 +35,8 @@
                             <bs3:row>
                                 <bs3:col span="12">
                                     <cpt:fieldSet name="Metadata" id="metadata">
+                                        <cpt:property id="logicalTypeName"/>
+                                        <cpt:property id="objectIdentifier"/>
                                         <cpt:property id="version"/>
                                     </cpt:fieldSet>
                                 </bs3:col>
