@@ -99,6 +99,7 @@
 
     <modules>
         <module>module-petowner</module>
+        <module>module-visit</module>
         <module>module-simple</module>
         <module>module-simple-tests</module>
         <module>webapp</module>
