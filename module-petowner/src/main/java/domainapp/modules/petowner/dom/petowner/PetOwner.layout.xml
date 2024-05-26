@@ -34,7 +34,9 @@
                         <bs3:tab name="Metadata">
                             <bs3:row>
                                 <bs3:col span="12">
-                                    <cpt:fieldSet name="Metadata" id="metadata"/>
+                                    <cpt:fieldSet name="Metadata" id="metadata">
+                                        <cpt:property id="version"/>
+                                    </cpt:fieldSet>
                                 </bs3:col>
                             </bs3:row>
                         </bs3:tab>
