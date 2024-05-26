@@ -17,7 +17,9 @@
                         <bs3:tab name="Identity">
                             <bs3:row>
                                 <bs3:col span="12">
-                                    <cpt:fieldSet name="Identity" id="identity"/>
+                                    <cpt:fieldSet name="Identity" id="identity">
+                                        <cpt:property id="name"/>
+                                    </cpt:fieldSet>
                                 </bs3:col>
                             </bs3:row>
                         </bs3:tab>
