@@ -20,11 +20,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
+import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.jaxb.PersistentEntityAdapter;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
+
+import domainapp.modules.petowner.types.Notes;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -89,6 +92,13 @@ public class Pet implements Comparable<Pet> {
     @Getter @Setter
     @PropertyLayout(fieldSetId = "details", sequence = "1")
     private PetSpecies species;
+
+    @Notes
+    @Column(length = Notes.MAX_LEN, nullable = true)
+    @Getter @Setter
+    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @PropertyLayout(fieldSetId = "details", sequence = "2")
+    private String notes;
 
     private final static Comparator<Pet> comparator =
             Comparator.comparing(Pet::getPetOwner).thenComparing(Pet::getName);
