@@ -23,6 +23,7 @@ import lombok.SneakyThrows;
 import lombok.val;
 import lombok.experimental.Accessors;
 
+import domainapp.modules.petowner.dom.pet.PetSpecies;
 import domainapp.modules.petowner.dom.petowner.PetOwner;
 import domainapp.modules.petowner.dom.petowner.PetOwners;
 
@@ -79,7 +80,10 @@ implements Persona<PetOwner, PetOwner_persona.Builder> {
             final var lastVisit = clockService.getClock().nowAsLocalDate().minusDays(numDaysAgo);
             petOwner.setLastVisit(lastVisit);
 
-            Arrays.stream(persona.petNames).forEach(petOwner::addPet);
+            Arrays.stream(persona.petNames).forEach(petName -> {
+                PetSpecies randomSpecies = fakeDataService.enums().anyOf(PetSpecies.class);
+                petOwner.addPet(petName, randomSpecies);
+            });
 
             return petOwner;
         }
