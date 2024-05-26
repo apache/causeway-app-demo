@@ -180,7 +180,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
 
     @Property
-    @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.DETAILS, sequence = "3.1")
     public Long getDaysSinceLastVisit() {
         return getLastVisit() != null
                 ? ChronoUnit.DAYS.between(getLastVisit(), clockService.getClock().nowAsLocalDate())
