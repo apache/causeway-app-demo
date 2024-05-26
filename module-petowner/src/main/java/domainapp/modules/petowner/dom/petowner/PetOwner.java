@@ -69,6 +69,7 @@ import domainapp.modules.petowner.PetOwnerModule;
 import domainapp.modules.petowner.dom.pet.Pet;
 import domainapp.modules.petowner.types.Name;
 import domainapp.modules.petowner.types.Notes;
+import domainapp.modules.petowner.types.PetName;
 import domainapp.modules.petowner.types.PhoneNumber;
 import domainapp.modules.petowner.value.EmailAddress;
 
@@ -159,6 +160,17 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Getter
     @OneToMany(mappedBy = "petOwner", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Pet> pets = new TreeSet<>();
+
+    @Action
+    @ActionLayout(associateWith = "pets", sequence = "1")
+    public PetOwner addPet(@PetName final String name) {
+        final var pet = new Pet();
+        pet.setName(name);
+        pet.setPetOwner(this);
+        pets.add(pet);
+        return this;
+    }
+
 
     @AttributeOverrides({
             @AttributeOverride(name="name",    column=@Column(name="attachment_name")),
