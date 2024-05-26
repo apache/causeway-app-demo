@@ -171,6 +171,13 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
         return this;
     }
 
+    @Action(choicesFrom = "pets")
+    @ActionLayout(associateWith = "pets", sequence = "2")
+    public PetOwner removePet(@PetName final Pet pet) {
+        pets.remove(pet);
+        return this;
+    }
+
 
     @AttributeOverrides({
             @AttributeOverride(name="name",    column=@Column(name="attachment_name")),
