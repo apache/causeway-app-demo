@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -169,6 +170,14 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
         pet.setPetOwner(this);
         pets.add(pet);
         return this;
+    }
+
+    @MemberSupport
+    public String validate0AddPet(final String name) {
+        if (getPets().stream().anyMatch(x -> Objects.equals(x.getName(), name))) {
+            return "This owner already has a pet called '" + name + "'";
+        }
+        return null;
     }
 
     @Action(choicesFrom = "pets")
