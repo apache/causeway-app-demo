@@ -163,7 +163,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
     @PdfJsViewer
     @Property(optionality = Optionality.OPTIONAL)
-    @PropertyLayout(fieldSetId = "content", sequence = "1")
     public Blob getAttachment() {
         return BlobJpaEmbeddable.toBlob(attachment);
     }
