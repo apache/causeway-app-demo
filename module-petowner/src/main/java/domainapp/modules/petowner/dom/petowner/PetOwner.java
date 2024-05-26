@@ -204,7 +204,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout(
-            associateWith = "name",
             // promptStyle = PromptStyle.INLINE,
             describedAs = "Updates the name of this object, certain characters (" + Name.PROHIBITED_CHARACTERS + ") are not allowed.")
     public PetOwner updateName(
