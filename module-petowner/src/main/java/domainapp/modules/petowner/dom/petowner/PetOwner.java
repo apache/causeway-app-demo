@@ -218,7 +218,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout(associateWith = "attachment", position = ActionLayout.Position.PANEL)
     public PetOwner updateAttachment(
             @Nullable final Blob attachment) {
         setAttachment(attachment);
