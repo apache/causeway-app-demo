@@ -104,7 +104,7 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
     @Version
     @Column(name = "version", nullable = false)
-    @PropertyLayout(fieldSetId = "metadata", sequence = "999")
+    @Property
     @Getter @Setter
     private long version;
 
