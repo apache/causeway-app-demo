@@ -143,7 +143,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @javax.persistence.Embedded
     @Getter @Setter
     @Property(editing = Editing.ENABLED, optionality = Optionality.OPTIONAL)
-    @PropertyLayout(fieldSetId = "contact", sequence = "1.2")
     private EmailAddress emailAddress;
 
     @Notes
