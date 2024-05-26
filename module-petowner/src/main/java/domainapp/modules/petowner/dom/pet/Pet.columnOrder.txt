@@ -1,4 +1,6 @@
 petOwner
 name
+species
+#notes
 #id
 #version
