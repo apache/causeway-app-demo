@@ -1,0 +1,4 @@
+causeway:
+  persistence:
+    schema:
+      auto-create-schemas: petowner,visit
