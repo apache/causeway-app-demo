@@ -47,6 +47,11 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>simpleapp-jpa-module-visit</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>simpleapp-jpa-module-simple</artifactId>
                 <version>${project.version}</version>
             </dependency>
