@@ -174,7 +174,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
 
     @Property(optionality = Optionality.OPTIONAL, editing = Editing.ENABLED)
-    @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.DETAILS, sequence = "3")
     @Column(nullable = true)
     @Getter @Setter
     private java.time.LocalDate lastVisit;
