@@ -4,7 +4,6 @@ import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
-import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,10 +24,6 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import org.apache.causeway.applib.annotation.ObjectSupport;
-
-import org.apache.causeway.applib.services.clock.ClockService;
-
 import org.springframework.lang.Nullable;
 
 import org.apache.causeway.applib.annotation.Action;
@@ -38,14 +33,15 @@ import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.MemberSupport;
+import org.apache.causeway.applib.annotation.ObjectSupport;
 import org.apache.causeway.applib.annotation.Optionality;
-import org.apache.causeway.applib.annotation.PromptStyle;
 import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.annotation.TableDecorator;
 import org.apache.causeway.applib.jaxb.PersistentEntityAdapter;
 import org.apache.causeway.applib.layout.LayoutConstants;
+import org.apache.causeway.applib.services.clock.ClockService;
 import org.apache.causeway.applib.services.message.MessageService;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.services.title.TitleService;
@@ -59,18 +55,18 @@ import org.apache.causeway.persistence.jpa.applib.types.BlobJpaEmbeddable;
 import static org.apache.causeway.applib.annotation.SemanticsOf.IDEMPOTENT;
 import static org.apache.causeway.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 
-import domainapp.modules.petowner.PetOwnerModule;
-import domainapp.modules.petowner.types.Name;
-import domainapp.modules.petowner.types.Notes;
-
-import domainapp.modules.petowner.types.PhoneNumber;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.val;
+
+import domainapp.modules.petowner.PetOwnerModule;
+import domainapp.modules.petowner.types.Name;
+import domainapp.modules.petowner.types.Notes;
+import domainapp.modules.petowner.types.PhoneNumber;
+import domainapp.modules.petowner.value.EmailAddress;
 
 
 @Entity
@@ -147,11 +143,11 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @PropertyLayout(fieldSetId = "contact", sequence = "1.1")
     private String telephoneNumber;
 
-    @Column(length = 40, nullable = true, name = "emailAddress")
+    @javax.persistence.Embedded
     @Getter @Setter
-    @Property(editing = Editing.ENABLED)
+    @Property(editing = Editing.ENABLED, optionality = Optionality.OPTIONAL)
     @PropertyLayout(fieldSetId = "contact", sequence = "1.2")
-    private String emailAddress;
+    private EmailAddress emailAddress;
 
     @Notes
     @Column(length = Notes.MAX_LEN, nullable = true)
