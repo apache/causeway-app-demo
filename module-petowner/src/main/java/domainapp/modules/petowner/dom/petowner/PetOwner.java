@@ -133,7 +133,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Column(length = 40, nullable = true, name = "knownAs")
     @Getter @Setter
     @Property(editing = Editing.ENABLED)
-    @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.IDENTITY, sequence = "1.1")
     private String knownAs;
 
     @PhoneNumber
