@@ -128,7 +128,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Name
     @Column(length = Name.MAX_LEN, nullable = false, name = "name")
     @Getter @Setter @ToString.Include
-    @PropertyLayout(fieldSetId = LayoutConstants.FieldSetId.IDENTITY, sequence = "1")
     private String name;
 
     @Column(length = 40, nullable = true, name = "knownAs")
