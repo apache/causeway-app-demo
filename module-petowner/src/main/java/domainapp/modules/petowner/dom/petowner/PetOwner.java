@@ -231,8 +231,6 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
     @ActionLayout(
-            fieldSetId = LayoutConstants.FieldSetId.IDENTITY,
-            position = ActionLayout.Position.PANEL,
             describedAs = "Deletes this object from the persistent datastore")
     public void delete() {
         final String title = titleService.titleOf(this);
