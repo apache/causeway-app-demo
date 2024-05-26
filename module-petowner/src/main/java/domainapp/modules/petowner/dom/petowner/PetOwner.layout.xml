@@ -47,7 +47,9 @@
                     </cpt:fieldSet>
                 </bs3:col>
                 <bs3:col span="12">
-                    <cpt:fieldSet name="Details" id="details"/>
+                    <cpt:fieldSet name="Details" id="details">
+                        <cpt:property id="notes"/>
+                    </cpt:fieldSet>
                 </bs3:col>
             </bs3:row>
         </bs3:col>
