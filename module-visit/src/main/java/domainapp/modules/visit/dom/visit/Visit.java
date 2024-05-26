@@ -50,7 +50,7 @@ import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityList
 @Named(VisitModule.NAMESPACE + ".Visit")
 @DomainObject(entityChangePublishing = Publishing.ENABLED)
 @DomainObjectLayout()
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
 public class Visit implements Comparable<Visit> {
@@ -67,12 +67,10 @@ public class Visit implements Comparable<Visit> {
     @Getter @Setter
     private long version;
 
-
-    Visit(Pet pet, LocalDateTime visitAt) {
+    public Visit(Pet pet, LocalDateTime visitAt) {
         this.pet = pet;
         this.visitAt = visitAt;
     }
-
 
     @ObjectSupport
     public String title() {
