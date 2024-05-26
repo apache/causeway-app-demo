@@ -2,6 +2,7 @@ package domainapp.modules.petowner.fixture;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.Arrays;
 
 import jakarta.inject.Inject;
 
@@ -29,20 +30,21 @@ import domainapp.modules.petowner.dom.petowner.PetOwners;
 public enum PetOwner_persona
 implements Persona<PetOwner, PetOwner_persona.Builder> {
 
-    JAMAL("Jamal Washington", "jamal.pdf", "J"),
-    CAMILA("Camila González", "camila.pdf", null),
-    ARJUN("Arjun Patel", "arjun.pdf", null),
-    NIA("Nia Robinson", "nia.pdf", null),
-    OLIVIA("Olivia Hartman", "olivia.pdf", null),
-    LEILA("Leila Hassan", "leila.pdf", null),
-    MATT("Matthew Miller", "matt.pdf", "Matt"),
-    BENJAMIN("Benjamin Thatcher", "benjamin.pdf", "Ben"),
-    JESSICA("Jessica Raynor", "jessica.pdf", "Jess"),
-    DANIEL("Daniel Keating", "daniel.pdf", "Dan");
+    JAMAL("Jamal Washington","jamal.pdf","J",new String[] {"Max"}),
+    CAMILA("Camila González","camila.pdf",null,new String[] {"Mia", "Coco", "Bella"}),
+    ARJUN("Arjun Patel","arjun.pdf",null,new String[] {"Rocky", "Charlie", "Buddy"}),
+    NIA("Nia Robinson","nia.pdf",null,new String[] {"Luna"}),
+    OLIVIA("Olivia Hartman","olivia.pdf",null,new String[] {"Molly", "Lucy", "Daisy"}),
+    LEILA("Leila Hassan","leila.pdf",null,new String[] {"Bruno"}),
+    MATT("Matthew Miller","matt.pdf","Matt",new String[] {"Simba"}),
+    BENJAMIN("Benjamin Thatcher","benjamin.pdf","Ben",new String[] {"Oliver"}),
+    JESSICA("Jessica Raynor","jessica.pdf","Jess",new String[] {"Milo", "Lucky"}),
+    DANIEL("Daniel Keating","daniel.pdf","Dan",new String[] {"Sam", "Roxy", "Smokey"});
 
     private final String name;
     private final String contentFileName;
     private final String knownAs;
+    private final String[] petNames;
 
     @Override
     public Builder builder() {
@@ -76,6 +78,8 @@ implements Persona<PetOwner, PetOwner_persona.Builder> {
             final var numDaysAgo = fakeDataService.ints().between(2, 100);
             final var lastVisit = clockService.getClock().nowAsLocalDate().minusDays(numDaysAgo);
             petOwner.setLastVisit(lastVisit);
+
+            Arrays.stream(persona.petNames).forEach(petOwner::addPet);
 
             return petOwner;
         }
