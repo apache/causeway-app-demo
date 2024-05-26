@@ -1,21 +1,13 @@
 package domainapp.modules.petowner.dom.pet;
 
-import domainapp.modules.petowner.PetOwnerModule;
-import domainapp.modules.petowner.dom.petowner.PetOwner;
-import domainapp.modules.petowner.types.PetName;
-
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.Comparator;
 
 import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +25,16 @@ import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.jaxb.PersistentEntityAdapter;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import domainapp.modules.petowner.PetOwnerModule;
+import domainapp.modules.petowner.dom.petowner.PetOwner;
+import domainapp.modules.petowner.types.PetName;
 
 @Entity
 @Table(
@@ -82,6 +84,11 @@ public class Pet implements Comparable<Pet> {
     @PropertyLayout(fieldSetId = "identity", sequence = "2")
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    @Getter @Setter
+    @PropertyLayout(fieldSetId = "details", sequence = "1")
+    private PetSpecies species;
 
     private final static Comparator<Pet> comparator =
             Comparator.comparing(Pet::getPetOwner).thenComparing(Pet::getName);
