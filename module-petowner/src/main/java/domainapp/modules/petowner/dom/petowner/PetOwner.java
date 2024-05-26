@@ -4,11 +4,14 @@ import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -18,6 +21,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.persistence.UniqueConstraint;
@@ -29,6 +33,7 @@ import org.springframework.lang.Nullable;
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
+import org.apache.causeway.applib.annotation.Collection;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
@@ -36,7 +41,6 @@ import org.apache.causeway.applib.annotation.MemberSupport;
 import org.apache.causeway.applib.annotation.ObjectSupport;
 import org.apache.causeway.applib.annotation.Optionality;
 import org.apache.causeway.applib.annotation.Property;
-import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.annotation.TableDecorator;
 import org.apache.causeway.applib.jaxb.PersistentEntityAdapter;
@@ -62,6 +66,7 @@ import lombok.ToString;
 import lombok.val;
 
 import domainapp.modules.petowner.PetOwnerModule;
+import domainapp.modules.petowner.dom.pet.Pet;
 import domainapp.modules.petowner.types.Name;
 import domainapp.modules.petowner.types.Notes;
 import domainapp.modules.petowner.types.PhoneNumber;
@@ -150,7 +155,10 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     private String notes;
 
-
+    @Collection
+    @Getter
+    @OneToMany(mappedBy = "petOwner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Pet> pets = new TreeSet<>();
 
     @AttributeOverrides({
             @AttributeOverride(name="name",    column=@Column(name="attachment_name")),
