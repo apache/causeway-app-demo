@@ -14,6 +14,7 @@ import org.apache.causeway.testing.fixtures.applib.fixturescripts.FixtureScript;
 import org.apache.causeway.testing.fixtures.applib.modules.ModuleWithFixtures;
 import org.apache.causeway.testing.fixtures.applib.teardown.jpa.TeardownFixtureJpaAbstract;
 
+import domainapp.modules.petowner.dom.pet.Pet;
 import domainapp.modules.petowner.dom.petowner.PetOwner;
 
 @Configuration
@@ -36,6 +37,7 @@ public class PetOwnerModule implements ModuleWithFixtures {
         return new TeardownFixtureJpaAbstract() {
             @Override
             protected void execute(ExecutionContext executionContext) {
+                deleteFrom(Pet.class);
                 deleteFrom(PetOwner.class);
             }
         };
