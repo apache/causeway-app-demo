@@ -68,6 +68,7 @@ import lombok.val;
 
 import domainapp.modules.petowner.PetOwnerModule;
 import domainapp.modules.petowner.dom.pet.Pet;
+import domainapp.modules.petowner.dom.pet.PetSpecies;
 import domainapp.modules.petowner.types.Name;
 import domainapp.modules.petowner.types.Notes;
 import domainapp.modules.petowner.types.PetName;
@@ -164,9 +165,10 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
     @Action
     @ActionLayout(associateWith = "pets", sequence = "1")
-    public PetOwner addPet(@PetName final String name) {
+    public PetOwner addPet(@PetName final String name, final PetSpecies species) {
         final var pet = new Pet();
         pet.setName(name);
+        pet.setSpecies(species);
         pet.setPetOwner(this);
         pets.add(pet);
         return this;
