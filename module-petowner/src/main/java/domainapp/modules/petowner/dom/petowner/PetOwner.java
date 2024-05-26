@@ -266,7 +266,13 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
 
 
 
-    @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
+    public static class DeleteActionDomainEvent
+            extends org.apache.causeway.applib.events.domain.ActionDomainEvent<PetOwner> {}
+
+    @Action(
+            semantics = NON_IDEMPOTENT_ARE_YOU_SURE,
+            domainEvent = DeleteActionDomainEvent.class
+    )
     @ActionLayout(
             describedAs = "Deletes this object from the persistent datastore")
     public void delete() {
