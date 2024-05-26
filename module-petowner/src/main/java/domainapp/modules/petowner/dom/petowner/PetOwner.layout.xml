@@ -18,7 +18,9 @@
                             <bs3:row>
                                 <bs3:col span="12">
                                     <cpt:fieldSet name="Identity" id="identity">
-                                        <cpt:property id="name"/>
+                                        <cpt:property id="name">
+                                            <cpt:action id="updateName"/>
+                                        </cpt:property>
                                         <cpt:property id="knownAs"/>
                                     </cpt:fieldSet>
                                 </bs3:col>
