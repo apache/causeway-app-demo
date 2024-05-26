@@ -60,6 +60,25 @@ public class PetOwner_bookVisit_IntegTest extends VisitModuleIntegTestAbstract {
         assertThat(visit.getVisitAt()).isEqualTo(visitAt);
     }
 
+    @Test
+    public void cannot_book_in_the_past() {
+
+        // given
+        PetOwner somePetOwner = fakeDataService.enums()
+                .anyOf(PetOwner_persona.class)
+                .findUsing(serviceRegistry);
+        Pet somePet = fakeDataService.collections()
+                .anyOf(somePetOwner.getPets());
+
+        // when, then
+        LocalDateTime visitAt = clockService.getClock().nowAsLocalDateTime();
+
+        assertThatThrownBy(() ->
+                wrapMixin(PetOwner_bookVisit.class, somePetOwner).act(somePet, visitAt)
+        )
+                .isInstanceOf(InvalidException.class)
+                .hasMessage("Must book in the future");
+    }
 
 
     @Inject FakeDataService fakeDataService;
