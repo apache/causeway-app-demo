@@ -70,6 +70,11 @@
                             <cpt:collection id="pets"/>
                         </bs3:col>
                     </bs3:row>
+                    <bs3:row>
+                        <bs3:col span="12">
+                            <cpt:collection id="visits"/>
+                        </bs3:col>
+                    </bs3:row>
                     <cpt:fieldSet name="Content" id="content">
                         <cpt:property id="attachment">
                             <cpt:action id="updateAttachment" position="PANEL"/>
