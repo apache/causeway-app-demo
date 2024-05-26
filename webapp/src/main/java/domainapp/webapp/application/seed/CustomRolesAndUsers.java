@@ -20,16 +20,16 @@ public class CustomRolesAndUsers extends FixtureScript {
     protected void execute(ExecutionContext executionContext) {
         executionContext.executeChildren(this,
                 new SimpleModuleSuperuserRole(),
-                new PetOwnerModuleSuperuserRole(),
+                new PetClinicSuperuserRole(),
                 new SvenUser());
     }
 
-    private static class PetOwnerModuleSuperuserRole extends AbstractRoleAndPermissionsFixtureScript {
+    private static class PetClinicSuperuserRole extends AbstractRoleAndPermissionsFixtureScript {
 
-        public static final String ROLE_NAME = "petowner-superuser";
+        public static final String ROLE_NAME = "petclinic-superuser";
 
-        public PetOwnerModuleSuperuserRole() {
-            super(ROLE_NAME, "Permission to use everything in the 'petowner' module");
+        public PetClinicSuperuserRole() {
+            super(ROLE_NAME, "Permission to use everything in the 'petowner' and 'visit' modules");
         }
 
         @Override
@@ -37,7 +37,7 @@ public class CustomRolesAndUsers extends FixtureScript {
             newPermissions(
                     ApplicationPermissionRule.ALLOW,
                     ApplicationPermissionMode.CHANGING,
-                    Can.of(ApplicationFeatureId.newNamespace("petowner"))
+                    Can.of(ApplicationFeatureId.newNamespace("petowner"), ApplicationFeatureId.newNamespace("visit"))
             );
         }
     }
@@ -70,7 +70,7 @@ public class CustomRolesAndUsers extends FixtureScript {
             public Can<String> get() {
                 return Can.of(
                         causewayConfiguration.getExtensions().getSecman().getSeed().getRegularUser().getRoleName(), // built-in stuff
-                        PetOwnerModuleSuperuserRole.ROLE_NAME,
+                        PetClinicSuperuserRole.ROLE_NAME,
                         SimpleModuleSuperuserRole.ROLE_NAME
                         );
             }
