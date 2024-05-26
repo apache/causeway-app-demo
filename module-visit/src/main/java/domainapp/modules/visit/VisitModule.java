@@ -1,5 +1,7 @@
 package domainapp.modules.visit;
 
+import domainapp.modules.petowner.PetOwnerModule;
+
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +18,8 @@ import org.apache.causeway.testing.fixtures.applib.teardown.jpa.TeardownFixtureJ
 
 @Configuration
 @Import({
+        PetOwnerModule.class,
+
         CausewayModuleExtPdfjsApplib.class,
         CausewayModuleExtFullCalendarApplib.class,
         CausewayModuleTestingFakeDataApplib.class,
