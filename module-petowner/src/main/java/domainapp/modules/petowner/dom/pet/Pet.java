@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
+import org.apache.causeway.applib.annotation.ObjectSupport;
 import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
@@ -73,6 +74,10 @@ public class Pet implements Comparable<Pet> {
         this.name = name;
     }
 
+    @ObjectSupport
+    public String iconName() {
+        return getSpecies().name().toLowerCase();
+    }
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id")
