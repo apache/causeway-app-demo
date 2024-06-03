@@ -6,7 +6,7 @@ import domainapp.modules.visit.dom.visit.VisitRepository;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
