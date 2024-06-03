@@ -44,11 +44,12 @@ TAG_NAMES=/tmp/$(basename $0).tag_names.$$
 if [ -n $FROM_TAG ]
 then
   git tag | grep v2 | awk -v pt="$FROM_TAG" '$0 > pt' > $TAG_NAMES
+  PREV=$FROM_TAG
 else
   git tag | grep v2 > $TAG_NAMES
+  PREV=""
 fi
 
-PREV=""
 for TAGV2 in $(cat $TAG_NAMES)
 do
   TAGV3=$(echo $TAGV2 | sed s/v2/v3/)
