@@ -1,6 +1,6 @@
 package domainapp.modules.petowner.value;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 
 import lombok.Getter;
 

@@ -4,7 +4,7 @@ import domainapp.modules.petowner.PetOwnerModule;
 
 import lombok.NonNull;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import org.apache.causeway.applib.services.bookmark.IdStringifier;
 import org.apache.causeway.applib.value.semantics.DefaultsProvider;
