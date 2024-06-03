@@ -143,7 +143,7 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @PropertyLayout(fieldSetId = "contact", sequence = "1.1")
     private String telephoneNumber;
 
-    @javax.persistence.Embedded
+    @jakarta.persistence.Embedded
     @Getter @Setter
     @Property(editing = Editing.ENABLED, optionality = Optionality.OPTIONAL)
     @PropertyLayout(fieldSetId = "contact", sequence = "1.2")

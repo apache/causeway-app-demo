@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 import org.apache.causeway.commons.internal.base._Strings;
 
-@javax.persistence.Embeddable
+@jakarta.persistence.Embeddable
 @org.apache.causeway.applib.annotation.Value
 @lombok.EqualsAndHashCode
 public class EmailAddress implements Serializable {
