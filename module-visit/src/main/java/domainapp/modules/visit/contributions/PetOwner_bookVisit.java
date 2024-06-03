@@ -3,7 +3,7 @@ package domainapp.modules.visit.contributions;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
