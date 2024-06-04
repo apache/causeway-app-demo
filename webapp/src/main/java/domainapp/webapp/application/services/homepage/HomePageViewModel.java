@@ -29,7 +29,7 @@ import domainapp.modules.visit.dom.visit.VisitRepository;
 public class HomePageViewModel {
 
     @ObjectSupport public String title() {
-        return getPetOwners().size() + " pet owners";
+        return getPetOwners().size() + " pet owners, " + getFutureVisits().size() + " future visits";
     }
 
     @Collection
