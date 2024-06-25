@@ -5,7 +5,7 @@
     <parent>
         <artifactId>simpleapp-jpa</artifactId>
         <groupId>org.apache.causeway.starters</groupId>
-        <version>3.0.0</version>
+        <version>3.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>simpleapp-jpa-webapp</artifactId>
@@ -87,7 +87,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>simpleapp-jpa-module-visit</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
