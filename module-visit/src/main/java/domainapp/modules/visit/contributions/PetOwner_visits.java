@@ -2,6 +2,7 @@ package domainapp.modules.visit.contributions;
 
 import domainapp.modules.petowner.dom.pet.Pet;
 import domainapp.modules.petowner.dom.petowner.PetOwner;
+import domainapp.modules.petowner.dom.petowner.PetOwnerRepository;
 import domainapp.modules.visit.dom.visit.Visit;
 import domainapp.modules.visit.dom.visit.VisitRepository;
 
@@ -28,6 +29,11 @@ public class PetOwner_visits {
     @MemberSupport
     public List<Visit> coll() {
         return visitRepository.findByPetOwner(petOwner);
+    }
+
+    @MemberSupport
+    public boolean hideColl() {
+        return petOwner.getPets().isEmpty();
     }
 
     @Inject VisitRepository visitRepository;
