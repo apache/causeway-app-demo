@@ -6,20 +6,15 @@ import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.Column;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.DomainService;
-import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Optionality;
 import org.apache.causeway.applib.annotation.Parameter;
 import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.PromptStyle;
-import org.apache.causeway.applib.annotation.Property;
-import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.SemanticsOf;
-import org.apache.causeway.applib.layout.LayoutConstants;
 import org.apache.causeway.applib.query.Query;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.persistence.jpa.applib.services.JpaSupportService;
@@ -28,13 +23,10 @@ import domainapp.modules.petowner.types.PhoneNumber;
 
 import domainapp.modules.petowner.value.EmailAddress;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import domainapp.modules.petowner.PetOwnerModule;
 import domainapp.modules.petowner.types.Name;
-
-import lombok.Setter;
 
 @Named(PetOwnerModule.NAMESPACE + ".PetOwners")
 @DomainService
@@ -56,11 +48,14 @@ public class PetOwners {
             @PhoneNumber
             final String telephoneNumber,
             @Parameter(optionality = Optionality.OPTIONAL)
-            final EmailAddress emailAddress) {
+            final EmailAddress emailAddress,
+            @PhoneNumber
+            final String faxNumber) {
         final var petOwner = PetOwner.withName(name);
         petOwner.setKnownAs(knownAs);
         petOwner.setTelephoneNumber(telephoneNumber);
         petOwner.setEmailAddress(emailAddress);
+        petOwner.setFaxNumber(faxNumber);
         return repositoryService.persist(petOwner);
     }
 
