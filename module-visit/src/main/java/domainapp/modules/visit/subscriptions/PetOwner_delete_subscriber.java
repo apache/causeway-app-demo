@@ -8,6 +8,8 @@ import java.util.List;
 
 import jakarta.inject.Inject;
 
+import org.apache.causeway.applib.services.repository.RepositoryService;
+
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -21,14 +23,14 @@ public class PetOwner_delete_subscriber {
             case HIDE:
                 break;
             case DISABLE:
-                List<Visit> visits = visitRepository.findByPetOwner(subject);
-                if (!visits.isEmpty()) {
-                    event.veto("This owner has %d visit%s", visits.size(), (visits.size() == 1 ? "" : "s"));
-                }
                 break;
             case VALIDATE:
                 break;
             case EXECUTING:
+                List<Visit> visits = visitRepository.findByPetOwner(subject);
+                for (Visit visit : visits) {
+                    repositoryService.remove(visit);
+                }
                 break;
             case EXECUTED:
                 break;
@@ -36,4 +38,5 @@ public class PetOwner_delete_subscriber {
     }
 
     @Inject VisitRepository visitRepository;
+    @Inject RepositoryService repositoryService;
 }
