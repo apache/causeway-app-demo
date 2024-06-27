@@ -37,45 +37,15 @@ public class PetOwner_cancelVisit {
     @Inject ClockService clockService;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @MemberSupport
-//    public Visit default0Act() {
-//        List<Visit> visits = choices0Act();
-//        return visits.size() == 1 ? visits.iterator().next() : null;
-//    }
-//    @MemberSupport
-//    public String disableAct() {
-//        return choices0Act().isEmpty() ? "No visits to cancel" : null;
-//    }
+    @MemberSupport
+    public Visit default0Act() {
+        List<Visit> visits = choices0Act();
+        return visits.size() == 1 ? visits.iterator().next() : null;
+    }
+    @MemberSupport
+    public String disableAct() {
+        return choices0Act().isEmpty() ? "No visits to cancel" : null;
+    }
 
 
 }
