@@ -12,6 +12,9 @@ public interface VisitRepository extends Repository<Visit, Integer> {
 
     List<Visit> findByVisitAtAfter(LocalDateTime visitAt);
 
+    @Query("select v from Visit v where v.pet.petOwner = :petOwner and v.visitAt >= :visitAt")
+    List<Visit> findByPetOwnerAndVisitAtAfter(PetOwner petOwner, LocalDateTime visitAt);
+
     @Query("select v from Visit v where v.pet.petOwner = :petOwner")
     List<Visit> findByPetOwner(PetOwner petOwner);
 }
