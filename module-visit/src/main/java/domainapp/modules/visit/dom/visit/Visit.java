@@ -2,6 +2,7 @@ package domainapp.modules.visit.dom.visit;
 
 import domainapp.modules.petowner.dom.pet.Pet;
 
+import domainapp.modules.petowner.dom.petowner.PetOwner;
 import domainapp.modules.visit.VisitModule;
 
 import lombok.AccessLevel;
@@ -30,12 +31,15 @@ import jakarta.persistence.UniqueConstraint;
 import jakarta.persistence.Version;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.ObjectSupport;
 import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
+import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.jaxb.PersistentEntityAdapter;
+import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.services.title.TitleService;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
@@ -100,4 +104,13 @@ public class Visit implements Comparable<Visit> {
     }
 
     @Inject @Transient TitleService titleService;
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT_ARE_YOU_SURE)
+    public PetOwner cancel() {
+        PetOwner petOwner = getPet().getPetOwner();
+        repositoryService.remove(this);
+        return petOwner;
+    }
+
+    @Inject @Transient RepositoryService repositoryService;
 }
