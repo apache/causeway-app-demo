@@ -147,6 +147,11 @@ public class PetOwner implements Comparable<PetOwner>, CalendarEventable {
     @Getter @Setter
     private String telephoneNumber;
 
+    @PhoneNumber
+    @Column(length = PhoneNumber.MAX_LEN, nullable = true, name = "faxNumber")
+    @Getter @Setter
+    private String faxNumber;
+
     @jakarta.persistence.Embedded
     @Getter @Setter
     @Property(editing = Editing.ENABLED, optionality = Optionality.OPTIONAL)

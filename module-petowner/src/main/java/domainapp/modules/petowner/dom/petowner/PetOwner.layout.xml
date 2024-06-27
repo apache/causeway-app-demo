@@ -50,6 +50,7 @@
                 <bs3:col span="12">
                     <cpt:fieldSet name="Contact" id="contact">
                         <cpt:property id="telephoneNumber"/>
+                        <cpt:property id="faxNumber"/>
                         <cpt:property id="emailAddress"/>
                     </cpt:fieldSet>
                 </bs3:col>

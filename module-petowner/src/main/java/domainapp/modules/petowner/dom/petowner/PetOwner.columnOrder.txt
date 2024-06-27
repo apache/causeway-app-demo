@@ -1,7 +1,8 @@
 name
 telephoneNumber
 emailAddress
-daysSinceLastVisit
+#daysSinceLastVisit
+faxNumber
 #lastVisit
 #knownAs
 #attachment
