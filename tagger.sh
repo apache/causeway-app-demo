@@ -68,7 +68,7 @@ do
 
 	if [ -n "$PREV_TAG" ]
 	then
-	  for COMMIT in $(git log $PREV_TAG..$TAG --pretty=format:"%H")
+	  for COMMIT in $(git log $PREV_TAG..$TAG --pretty=format:"%H" --reverse)
 	  do
 
       echo "git cherry-pick $COMMIT"
