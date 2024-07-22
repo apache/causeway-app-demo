@@ -75,6 +75,12 @@ do
       if [ "$EXECUTE" = "true" ]
       then
         git cherry-pick $COMMIT
+
+        if [ $? -ne 0 ]
+        then
+            echo "Cherry-pick failed; aborting."
+            exit 1
+        fi
       fi
 
       if [ "$EXECUTE" = "true" ]
@@ -92,7 +98,7 @@ do
     done
 	fi
 
-  echo "git tag $NEW_TAG"
+  echo "git tag -f $NEW_TAG"
 
   if [ "$EXECUTE" = "true" ]
   then
