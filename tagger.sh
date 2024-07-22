@@ -102,6 +102,7 @@ do
 
   if [ "$EXECUTE" = "true" ]
   then
+	  git tag -d $NEW_TAG >/dev/null 2>&1
 	  git tag -f $NEW_TAG
   fi
 
